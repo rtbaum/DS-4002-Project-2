@@ -1,0 +1,1 @@
+Our initial dataset is too big to upload to GitHub. We downloaded this dataset from (https://wildlife.faa.gov/search) from 1990-2023. We then performed all of the cleaning and analysis to get to our final dataset in the complete_script file in the SCRIPTS folder.
