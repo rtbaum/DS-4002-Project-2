@@ -1,0 +1,96 @@
+---
+title: "Time Series DS 4002"
+output: html_document
+date: "2024-02-27"
+---
+
+```{r}
+# Downloading Libraries
+
+library(lubridate)
+library(forecast)
+library(dplyr)
+library(ggplot2)
+
+# Reading in dataset
+
+setwd("C:/Users/Bella/OneDrive - University of Virginia/Documents/Documents/UVA fourth year/DS4002")
+birdstrikes <- read.csv("STRIKE_REPORTS.csv")
+```
+
+```{r}
+# Setting up dataset, choosing columns and removing NAs
+
+finalbirdstrikes <- select(birdstrikes, "INCIDENT_YEAR", "TIME_OF_DAY", "AIRPORT_ID", "STATE", "PHASE_OF_FLIGHT")
+finalbirdstrikes <- finalbirdstrikes[finalbirdstrikes$INCIDENT_YEAR != 2024, ]
+finalbirdstrikes[finalbirdstrikes==""] <- NA
+finalbirdstrikes <- na.omit(finalbirdstrikes) 
+
+# Creating a dataset with count values
+
+count_dataset <- finalbirdstrikes %>% group_by(INCIDENT_YEAR, TIME_OF_DAY) %>% summarise(n = n())
+count_dataset
+```
+
+```{r}
+# Exporting final datasets
+
+write.csv(count_dataset, "C:/Users/Bella/OneDrive - University of Virginia/Documents/Documents/UVA fourth year/DS4002\\final_dataset.csv", row.names=FALSE)
+
+```
+
+```{r}
+# Plot of Time of Day
+ggplot(finalbirdstrikes, aes(x=TIME_OF_DAY)) + 
+  geom_bar() + ggtitle("Time of Day Distribution")
+
+# Plot of Year
+ggplot(finalbirdstrikes, aes(x=INCIDENT_YEAR)) + 
+  geom_bar() + ggtitle("Year Distribution")
+
+# Plot of Time of Day and Year
+ggplot(count_dataset, aes(factor(INCIDENT_YEAR), y=n, fill = TIME_OF_DAY)) +     
+  geom_col(position = 'dodge') +ggtitle("Distribution of Strikes at Each Year and Time of Day")+ theme(axis.text.x = element_text(angle=90, hjust=1))
+```
+
+
+```{r}
+# Separate the Count Dataset into 4 Different Datasets by the Time of Day
+
+day_dataset <- count_dataset %>% filter(TIME_OF_DAY=="Day") %>% select(INCIDENT_YEAR,n)
+dusk_dataset <- count_dataset %>% filter(TIME_OF_DAY=="Dusk") %>% select(INCIDENT_YEAR,n)
+dawn_dataset <- count_dataset %>% filter(TIME_OF_DAY=="Dawn")%>% select(INCIDENT_YEAR,n)
+night_dataset <- count_dataset %>% filter(TIME_OF_DAY=="Night")%>% select(INCIDENT_YEAR,n)
+
+# Forecasting Day 5 Years in the Future
+day.ts <- ts(day_dataset[,2], start = 1990, frequency = 1)
+fit.day <- auto.arima(day.ts)
+
+forecast_day <- forecast(fit.day, 5)
+plot(forecast_day, xlab = "Year", ylab = "Number of Bird Strikes", main = "Number of Bird Strikes Occuring during the Day")
+
+# Forecasting Dusk 5 Years in the Future
+dusk.ts <- ts(dusk_dataset[,2], start = 1990, frequency = 1)
+fit.dusk <- auto.arima(dusk.ts)
+
+forecast_dusk <- forecast(fit.dusk, 5)
+plot(forecast_dusk, xlab = "Year", ylab = "Number of Bird Strikes", main ="Number of Bird Strikes Occuring at Dusk")
+
+
+# Forecasting Dawn 5 Years in the Future
+dawn.ts <- ts(dawn_dataset[,2], start = 1990, frequency = 1)
+fit.dawn <- auto.arima(dawn.ts)
+
+forecast_dawn <- forecast(fit.dawn, 5)
+plot(forecast_dawn, xlab = "Year", ylab = "Number of Bird Strikes", main = "Number of Bird Strikes Occuring at Dawn")
+
+
+# Forecasting Night 5 Years in the Future
+night.ts <- ts(night_dataset[,2], start = 1990, frequency = 1)
+fit.night <- auto.arima(night.ts)
+
+forecast_night <- forecast(fit.night, 5)
+plot(forecast_night, xlab = "Year", ylab = "Number of Bird Strikes", main = "Number of Bird Strikes Occuring during the Night")
+
+```
+
