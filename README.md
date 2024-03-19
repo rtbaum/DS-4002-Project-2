@@ -6,8 +6,11 @@ We used R and RStudio to complete this analysis on HP laptops.
 
 # Section 2: Documentation Map
 | Folder              |  Files         |
-| DATA              |  placeholder         |
+| ------             | ------         |
+| DATA              |  placeholder    |
+| ------            |  ------         |
 | OUTPUT              | x          |
+| -----------        | ---------- |
 | SCRIPTS              | x          |
 
 # Section 3: Instructions for Reproducing Results. 
