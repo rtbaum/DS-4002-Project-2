@@ -9,6 +9,7 @@ We used R and RStudio on Windows to complete this analysis.
 | ------             | ------         |
 | DATA              |  placeholder    |
 | OUTPUT              | x          |
+| REFERENCES          | References.md |
 | SCRIPTS              | x          |
 
 # Section 3: Instructions for Reproducing Results. 
