@@ -7,10 +7,10 @@ We used R and RStudio on Windows to complete this analysis.
 # Section 2: Documentation Map
 | Folder              |  Files         |
 | ------             | ------         |
-| DATA              |  placeholder    |
-| OUTPUT              | x          |
+| DATA              |  initial_data, final_data    |
+| OUTPUT              | forecastdawn, forecastday, forecastdusk, forecastnight, timeofdayplot, timeofdayandyearplot, yearplot          |
 | REFERENCES          | References.md |
-| SCRIPTS              | x          |
+| SCRIPTS              | complete_script.rmd          |
 
 # Section 3: Instructions for Reproducing Results. 
 
