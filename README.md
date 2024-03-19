@@ -2,7 +2,7 @@
 This repository contains files from Group 17's Time-Series Analysis Project (Project 2)
 
 # Section 1: Software and Platform
-We used R and RStudio to complete this analysis on HP laptops.
+We used R and RStudio on Windows to complete this analysis.
 
 # Section 2: Documentation Map
 | Folder              |  Files         |
