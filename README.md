@@ -8,9 +8,7 @@ We used R and RStudio to complete this analysis on HP laptops.
 | Folder              |  Files         |
 | ------             | ------         |
 | DATA              |  placeholder    |
-| ------            |  ------         |
 | OUTPUT              | x          |
-| -----------        | ---------- |
 | SCRIPTS              | x          |
 
 # Section 3: Instructions for Reproducing Results. 
