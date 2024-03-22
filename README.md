@@ -8,7 +8,7 @@ We used R and RStudio on Windows to complete this analysis. We used the ggplot2,
 | Folder              |  Files         |
 | ------             | ------         |
 | DATA              |   data_appendix.pdf, final_data.csv, initial_data.md    |
-| OUTPUT              | forecastdawn.png, forecastday.png, forecastdusk.png, forecastnight.png, timeofdayplot.png, timeofdayandyearplot.png, yearplot.png          |
+| OUTPUT              | dawnforecasr.png, dayforecast.png, duskforecast.png, nightforecast.png, timeofdayplot.png, timeofdayandyearplot.png, yearplot.png          |
 | REFERENCES          | References.md |
 | SCRIPTS              | complete_script.rmd          |
 
